@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Lawyers</title>
+  <link rel="stylesheet" href="Bstyle.css">
+  <style>
+    /* General Styles */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #2c3e50;
+      color: #fff;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    header .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo i {
+      margin-right: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      margin: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li a i {
+      margin-right: 8px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .lawyer-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      flex: 1 1 calc(50% - 20px);
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .lawyer-container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2 {
+      margin: 0 0 0.5rem 0;
+    }
+
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .book-appointment-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-appointment-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.3s;
+    }
+
+    .book-appointment-button:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+
+    .book-appointment-button:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .lawyer-container {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Lawyers</h1>
+    <nav>
+      <ul>
+        <li><a href="#criminal-lawyer">Criminal Lawyer</a></li>
+        <li><a href="#corporate-lawyer">Corporate Lawyer</a></li>
+        <li><a href="#family-lawyer">Family Lawyer</a></li>
+        <li><a href="#real-estate-lawyer">Real Estate Lawyer</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="lawyer-container" id="criminal-lawyer">
+        <h2>Criminal Lawyer</h2>
+        <h3>Mohan</h3>
+        <p>Mohan is a distinguished criminal defense lawyer based in Mumbai. With over 20 years of experience in the legal field, he has successfully defended numerous high-profile clients in complex criminal cases. Known for his sharp legal acumen and courtroom expertise, Mahesh is widely respected within the legal community.</p>
+        <a href="b.html" class="book-appointment-button"><span>Book an Appointment</span></a>
+      </div>
+
+      <div class="lawyer-container" id="corporate-lawyer">
+        <h2>Corporate Lawyer</h2>
+        <h3>Sunita</h3>
+        <p>Sunita specializes in corporate law, focusing on mergers and acquisitions, corporate compliance, and intellectual property rights. With a solid background in handling complex corporate transactions, Sunita provides expert legal advice to businesses and ensures their compliance with regulatory requirements.</p>
+        <a href="c.html" class="book-appointment-button"><span>Book an Appointment</span></a>
+      </div>
+
+      <div class="lawyer-container" id="family-lawyer">
+        <h2>Family Lawyer</h2>
+        <h3>Rani Mehta</h3>
+        <p>Rani Mehta is a dedicated family lawyer practicing in New Delhi. In matrimonial disputes, child custody matters, and divorce proceedings, she provides compassionate and personalized legal assistance to her clients. Rani is committed to resolving family conflicts amicably and ensuring the best interests of her clients and their children.</p>
+        <a href="booking.html" class="book-appointment-button"><span>Book an Appointment</span></a>
+      </div>
+
+      <div class="lawyer-container" id="real-estate-lawyer">
+        <h2>Real Estate Lawyer</h2>
+        <h3>Rajesh</h3>
+        <p>Rajesh is an expert in real estate law with extensive experience in property transactions, real estate disputes, and landlord-tenant issues. He assists clients with legal matters related to buying, selling, and leasing properties, ensuring smooth transactions and compliance with real estate regulations.</p>
+        <a href="d.html" class="book-appointment-button"><span>Book an Appointment</span></a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Our Lawyers. All rights reserved.</p>
+  </footer>
+</body>
+</html>
