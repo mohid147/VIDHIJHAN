@@ -6,21 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User-friendly Appointment Booking Consultancy</title>
     <link rel="stylesheet" href="lawstyle.css">
-    <!-- Add modern font and icons -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* AI button styles */
+        .ai-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color:  #e74c3c; /* Color matches the existing design */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it stays above other elements */
+        }
+        .ai-btn i {
+            pointer-events: none;
+        }
+
+        /* AI interface styles */
+        .ai-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none; /* Hidden by default */
+            z-index: 1000;
+            overflow: hidden;
+            transition: all 0.3s ease; /* Smooth transition for resizing */
+        }
+        .ai-window.fullscreen {
+            width: 100vw;
+            height: 100vh;
+            bottom: 0;
+            right: 0;
+            border-radius: 0;
+        }
+        .ai-window h3 {
+            margin: 0;
+            padding: 10px;
+            background: #e74c3c;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ai-content {
+            height: calc(100% - 80px); /* Adjust height for footer */
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .ai-footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            background: #f1f1f1;
+            box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ai-footer input {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .ai-footer button {
+            background: #e74c3c;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .ai-footer button:hover {
+            background: #c0392b;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 600px) {
+            .ai-window {
+                width: 90vw;
+                height: 90vh;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <a href="law.html" class="logo">VIDHIJHAN</a>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="appointmentt.html">Appointments</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="lawlogin.html">Login</a></li>
+                <li><a href="#"><i class="fas fa-home"></i></a></li>
+                <li><a href="#"><i class="fas fa-briefcase"></i></a></li>
+                <li><a href="appointmentt.html"><i class="fas fa-calendar-check"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="lawlogin.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
             </ul>
         </nav>
     </header>
@@ -33,15 +129,13 @@
                 <a href="appointmentt.html" class="cta-button">Book Online Now</a>
             </div>
         </section>
-        <!-- Image Slider -->
         <section class="slider">
             <div class="slides">
                 <img src="C:\Users\mohid\OneDrive\Pictures\law.png" alt="Image 1">
                 <img src="C:\Users\mohid\OneDrive\Pictures\Screenshots\Screenshot 2024-03-04 163513.png" alt="Image 2">
-                <!-- Add more images as needed -->
             </div>
-            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-            <button class="next" onclick="plusSlides(1)">&#10095;</button>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </section>
         <section class="about-us">
             <h2>About Us</h2>
@@ -57,25 +151,130 @@
     <footer>
         <p>&copy; 2024 All rights reserved.</p>
     </footer>
-    <script src="slider.js"></script>
-</body>
-</html>
 
+    <!-- AI button -->
+    <div id="ai-btn" class="ai-btn">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- AI interface -->
+    <div id="ai-window" class="ai-window">
+        <h3>AI Interface
+            <button class="fullscreen-btn"><i class="fas fa-expand-arrows-alt"></i></button>
+        </h3>
+        <div class="ai-content">
+           <h4>How can I assist you today? Feel free to ask any questions related to legal cases or consultations</h4>
+        </div>
+        <div class="ai-footer">
+            <input type="text" id="ai-input" placeholder="Ask me anything..." />
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- JavaScript for the slider and AI button -->
     <script>
         let slideIndex = 0;
-        showSlides(slideIndex);
+        showSlides();
+
+        function showSlides() {
+            let i;
+            const slides = document.querySelectorAll(".slides img");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
 
         function plusSlides(n) {
             showSlides(slideIndex += n);
         }
 
-        function showSlides(n) {
-            let slides = document.querySelectorAll('.slides img');
-            if (n >= slides.length) { slideIndex = 0; }
-            if (n < 0) { slideIndex = slides.length - 1; }
-            slides.forEach((slide, index) => {
-                slide.style.display = (index === slideIndex) ? 'block' : 'none';
-            });
+        // Function to make the button draggable
+        dragElement(document.getElementById("ai-btn"));
+
+        function dragElement(elmnt) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            elmnt.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Function to toggle AI window
+        document.getElementById('ai-btn').addEventListener('click', function() {
+            const aiWindow = document.getElementById('ai-window');
+            if (aiWindow.style.display === 'none' || aiWindow.style.display === '') {
+                aiWindow.style.display = 'block';
+            } else {
+                aiWindow.style.display = 'none';
+            }
+        });
+
+        // Function to toggle full-screen mode
+        document.querySelector('.fullscreen-btn').addEventListener('click', function() {
+            const aiWindow = document.getElementById('ai-window');
+            if (aiWindow.classList.contains('fullscreen')) {
+                aiWindow.classList.remove('fullscreen');
+                this.innerHTML = '<i class="fas fa-expand-arrows-alt"></i>'; // Change icon to expand
+            } else {
+                aiWindow.classList.add('fullscreen');
+                this.innerHTML = '<i class="fas fa-compress-arrows-alt"></i>'; // Change icon to collapse
+            }
+        });
+
+        // Function to handle message sending
+        document.getElementById('send-btn').addEventListener('click', function() {
+            const inputField = document.getElementById('ai-input');
+            const userMessage = inputField.value;
+            if (userMessage.trim()) {
+                const messageContainer = document.createElement('div');
+                messageContainer.textContent = `You: ${userMessage}`;
+                messageContainer.classList.add('user-message');
+                document.querySelector('.ai-content').appendChild(messageContainer);
+                inputField.value = '';
+
+                // AI response
+                const aiResponse = document.createElement('div');
+                aiResponse.classList.add('ai-response');
+                aiResponse.textContent = generateAIResponse(userMessage);
+                document.querySelector('.ai-content').appendChild(aiResponse);
+                document.querySelector('.ai-content').scrollTop = document.querySelector('.ai-content').scrollHeight; // Scroll to bottom
+            }
+        });
+
+        function generateAIResponse(message) {
+            const responses = {
+                "hi": "Hello! How can I assist you today?",
+                "What is vidhijhan": "VIDHIJHAN is your gateway to swift legal solutions. We provide expert legal advice and support.",
+                "about": "VIDHIJHAN connects legal minds to offer convenient and efficient legal consultations.",
+                "contact": "You can contact us at +91 6303279390 for more information or to book an appointment."
+            };
+            return responses[message.toLowerCase()] || "Sorry, I didn't understand that. Could you please rephrase?";
         }
     </script>
 </body>
