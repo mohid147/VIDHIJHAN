@@ -6,10 +6,14 @@
   <title>Our Lawyers</title>
   <link rel="stylesheet" href="Bstyle.css">
   <script>
-    function toggleMenu() {
-      const nav = document.getElementById('nav-links');
-      nav.classList.toggle('active');
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.getElementById('menu-icon');
+    const menu = document.getElementById('menu');
+
+    menuIcon.addEventListener('click', function () {
+        menu.classList.toggle('active');
+    });
+    });
   </script>
 </head>
 <body>
