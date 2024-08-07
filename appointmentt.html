@@ -5,18 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Lawyers</title>
   <link rel="stylesheet" href="Bstyle.css">
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-links');
+      nav.classList.toggle('active');
+    }
+  </script>
 </head>
 <body>
   <header>
-    <h1>Our Lawyers</h1>
-    <nav>
-      <ul>
-        <li><a href="#criminal-lawyer">Criminal Lawyer</a></li>
-        <li><a href="#corporate-lawyer">Corporate Lawyer</a></li>
-        <li><a href="#family-lawyer">Family Lawyer</a></li>
-        <li><a href="#real-estate-lawyer">Real Estate Lawyer</a></li>
-      </ul>
-    </nav>
+    <div class="header-content">
+      <h1>Our Lawyers</h1>
+      <nav>
+        <ul id="nav-links">
+          <li><a href="#criminal-lawyer">Criminal Lawyer</a></li>
+          <li><a href="#corporate-lawyer">Corporate Lawyer</a></li>
+          <li><a href="#family-lawyer">Family Lawyer</a></li>
+          <li><a href="#real-estate-lawyer">Real Estate Lawyer</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main>
