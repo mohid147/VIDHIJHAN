@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 15px; /* Add padding for better spacing on smaller screens */
 }
 
 .login-form {
@@ -75,6 +76,8 @@ a:hover {
     text-decoration: underline;
     color: #c0392b; /* Darker shade on hover */
 }
+
+/* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
     .login-form {
         padding: 20px;
@@ -86,6 +89,7 @@ a:hover {
     }
 }
 
+/* Small devices (phones, 480px and up) */
 @media (max-width: 480px) {
     .login-form {
         padding: 15px;
@@ -104,5 +108,27 @@ a:hover {
     input[type="text"],
     input[type="password"] {
         font-size: 16px;
+    }
+}
+
+/* Extra small devices (small phones, 320px and up) */
+@media (max-width: 320px) {
+    .login-form {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 10px 8px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 14px;
     }
 }
