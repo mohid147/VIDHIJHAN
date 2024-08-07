@@ -57,6 +57,7 @@
       padding: 0.5rem;
       border: 1px solid #ddd;
       border-radius: 4px;
+      box-sizing: border-box;
     }
 
     .form-group button {
@@ -82,53 +83,75 @@
       border-radius: 8px;
       margin-top: 20px;
     }
+
     @media (max-width: 768px) {
-  .hero-content h2 {
-      font-size: 2.5em;
-  }
+      .container {
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+      }
 
-  .hero-content h4 {
-      font-size: 1.2em;
-  }
+      .lawyer-image {
+        max-width: 100%;
+        margin: 0 0 20px 0;
+      }
 
-  .cta-button {
-      padding: 10px 20px;
-  }
-}
+      .appointment-form {
+        flex: none;
+        width: 100%;
+      }
 
-@media (max-width: 480px) {
-  header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px;
-  }
+      .form-group {
+        margin-bottom: 0.75rem;
+      }
 
-  nav ul {
-      flex-direction: column;
-      gap: 10px;
-  }
+      .form-group label {
+        margin-bottom: 0.25rem;
+      }
 
-  .hero-content h2 {
-      font-size: 2em;
-  }
+      .form-group button {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
 
-  .hero-content h4 {
-      font-size: 1em;
-  }
+      .confirmation {
+        padding: 10px;
+      }
+    }
 
-  .cta-button {
-      padding: 8px 15px;
-  }
+    @media (max-width: 480px) {
+      .container {
+        margin: 5px;
+        padding: 5px;
+      }
 
-  .about-us, .contact-us {
-      padding: 30px 15px;
-  }
+      .form-group {
+        margin-bottom: 0.5rem;
+      }
 
-  .about-us h2, .contact-us h2 {
-      font-size: 1.5em;
-  }
-}
+      .form-group label {
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+      }
 
+      .form-group input, .form-group textarea {
+        padding: 0.25rem;
+        font-size: 0.875rem;
+      }
+
+      .form-group button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .confirmation {
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
