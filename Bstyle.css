@@ -16,9 +16,10 @@ header {
     color: #fff;
     position: relative;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
-header .header-content {
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,6 +29,10 @@ header .header-content {
 header h1 {
     margin: 0;
     font-size: 1.5em;
+}
+
+nav {
+    position: relative;
 }
 
 nav ul {
@@ -54,6 +59,32 @@ nav ul li a {
     display: none;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+#nav-links {
+    display: flex;
+}
+
+#nav-links.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: max-content;
+}
+
+#nav-links li {
+    display: block;
+    margin: 5px 0;
+}
+
+#nav-links li a {
+    padding: 10px 15px;
+    display: block;
 }
 
 .container {
@@ -133,23 +164,12 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: relative;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
     nav ul {
         display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        background-color: #2c3e50;
-        padding: 10px;
-        border-radius: 8px;
-    }
-
-    nav ul.active {
-        display: flex;
     }
 
     .menu-icon {
@@ -168,6 +188,10 @@ footer {
     header h1 {
         margin-bottom: 10px;
     }
+
+    #nav-links {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -181,7 +205,6 @@ footer {
 
     .book-appointment-button {
         padding: 12px 20px;
-        font-size: 0.9em;
     }
 
     h2 {
@@ -193,25 +216,6 @@ footer {
     }
 
     p {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
 }
-
-@media (max-width: 320px) {
-    .book-appointment-button {
-        padding: 10px 15px;
-        font-size: 0.8em;
-    }
-
-    h2 {
-        font-size: 1em;
-    }
-
-    h3 {
-        font-size: 0.9em;
-    }
-
-    p {
-        font-size: 0.8em;
-    }
-}    
